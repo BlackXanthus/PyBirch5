@@ -83,11 +83,7 @@ class Channel(QtWidgets.QMdiSubWindow):
 		#install the key event filter.
 		self.ui.text_input.installEventFilter(self)
 
-		#font ssize should probably not be done like this
-		tempFontSize = self.config.get("Font","Size")
-		fontSize= tempFontSize.replace("pt", "")
-
-		self.ui.text_input.setFont(QFont(self.config.get("Font","Name"), int(fontSize)))
+		self.setInputFont()
 
 		self._nicklist = NickListView()
 
@@ -149,6 +145,14 @@ class Channel(QtWidgets.QMdiSubWindow):
 		#self.setWindowTitle(self.get_channel_name()+" - "+myTitle)
 		#Tooltip removed due to being irritating. 
 		#self.setToolTip(myTitle)
+
+
+	def setInputFont(self):
+		#font ssize should probably not be done like this
+		tempFontSize = self.config.get("Font","Size")
+		fontSize= tempFontSize.replace("pt", "")
+		self.ui.text_input.setFont(QFont(self.config.get("Font","Name"), int(fontSize)))
+
 
 
 	##############
@@ -480,30 +484,6 @@ class Channel(QtWidgets.QMdiSubWindow):
 
 		ts = uIS.process_input(channelName, self._nick, originalString,self.config,self.plugins)
 
-		
-		#self.ui.editor_Window.moveCursor(11,False)
-#
-#		myTextToSwitch = textToSend.split(" ")
-#
-#		if myTextToSwitch[0][0:1] == "/":
-#			if myTextToSwitch[0] == "/msg":
-#			        #Note, this doesn't in any way work.
-#				remainderIndex = textToSend.find(myTextToSwitch[1])
-#				textToSend = "PRIVMSG "+myTextToSwitch[1]+" "+textToSend[remainderIndex:]
-#				displayText = "**Messaging "+myTextToSwitch[1]+textToSend[remainderIndex:]
-#			else:
-#				textToSend = str(textToSend[1:])
-#				displayText = "---"+str(textToSend). 
-#remainderIndex=string.find(strServerOutput,":",2)
-#		else:
-#			textToSend = "PRIVMSG "+channelName+" :"+textToSend
-#			displayText = "["+_nick_+"] "+originalString
-
-#		try:
-#			showTime=self.config.get("Channel_Settings", "Time")
-#		except:
-#			pass
-
 
 		#self.emit(QtCore.SIGNAL("UserInput"),ts.get_original_string())
 		self.UserInput.emit(ts.get_original_string())
@@ -525,6 +505,7 @@ class Channel(QtWidgets.QMdiSubWindow):
 		#Search String for tab-searches reset to empty.
 		self.tabSearchIndex=0
 		self.tabSearchString=""
+		self.setInputFont()
 
 
 	def nick_update(self, my_new_nick):
