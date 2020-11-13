@@ -43,7 +43,7 @@ class StartQT5(QMainWindow):
 	config=""
 	_nick_=""
 	_nick=""
-	_version="0.5.0.1 ALPHA"
+	_version="0.5.0.2 ALPHA"
 	statusWindow = ""
 	_layout=const_NONE
 
@@ -684,8 +684,8 @@ class StartQT5(QMainWindow):
 
 	def resizeEvent(self,event):
 
-		if(self._layout==self.const_NONE):
-			print("Do nothing, layout is empty")
+		#if(self._layout==self.const_NONE):
+			#print("Do nothing, layout is empty")
 		
 		if(self._layout==self.const_TILE):
 			#print("Tiling Layout")
