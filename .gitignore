@@ -1,0 +1,7 @@
+logs/
+__pycache__/
+.vscode/
+*.cfg
+*.code-workspace
+*.bck
+*.e4p

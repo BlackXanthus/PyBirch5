@@ -1,0 +1,226 @@
+------- Welcome to PyBirch ----------------------------------
+
+Welcome to PyBirch. A python3 IRC client. It's written simply for fun, and it's
+mostly fixed when time presents itself. This will slowly improve over, probably,
+months. Eventually this will be released, if all the things for moving to Beta
+are ever fulfilled. That's a long, long way off. This text is mostly here
+just to fill up the About window's box, so that there's actually something
+in there. 
+
+Blow you will find the things that have been done, as well as known bugs, and
+things that are being fixed for each version. If you find a bug that is not
+listed, please let me know.
+
+Missing functionality is not a bug. It's something we will get around too
+as soon as possible, or when it annoys me that it's not in the code. 
+
+
+------- Setting Information ---- 
+
+The config file for py-Birth is py-birch.cfg. Not all of the settings currently
+show up in the properties dialogue. 
+
+The config file is in .ini format (currently), and can be edited by hand, if you know
+what your doing. Below are all of the sections, and their defaults. 
+
+Correct as of : Alpha 0.4.2.2
+
+
+		#Text Settings
+		self.dict_DefaultConfig["Font"] = dict()
+		self.dict_DefaultConfig["Font"]["Name"] = "Arial"
+		self.dict_DefaultConfig["Font"]["Size"] = "5"
+
+		#Colour Settings
+		self.dict_DefaultConfig["Text_Colours"] = dict()
+		self.dict_DefaultConfig["Text_Colours"]["Action"] = "Blue"
+		self.dict_DefaultConfig["Text_Colours"]["Mode"] = "Red"
+		self.dict_DefaultConfig["Text_Colours"]["Join"] = "Green"
+		self.dict_DefaultConfig["Text_Colours"]["Part"] = "Green"
+		self.dict_DefaultConfig["Text_Colours"]["Quit"] = "Lime"
+		self.dict_DefaultConfig["Text_Colours"]["Kick"] = "Tomato"
+		self.dict_DefaultConfig["Text_Colours"]["Message"] = "Blue"
+		self.dict_DefaultConfig["Text_Colours"]["Attention"] = "Orange"
+		self.dict_DefaultConfig["Text_Colours"]["Notice"] = "Purple"
+
+		#Channel Settings
+		self.dict_DefaultConfig["Channel_Settings"] = dict()
+		self.dict_DefaultConfig["Channel_Settings"]["Time"]= "True"
+		self.dict_DefaultConfig["Channel_Settings"]["Button_Alert_Colour"] = "red"
+		self.dict_DefaultConfig["Channel_Settings"]["Nickcomplete_Postscript"]=":"
+		self.dict_DefaultConfig["Channel_Settings"]["ShowNicknameOnWindow"]="False"
+		self.dict_DefaultConfig["Channel_Settings"]["ShowChanNameOnTitleBar"]="False"
+
+
+		#Status Window Settings
+		self.dict_DefaultConfig["Status_Settings"] = dict()
+		self.dict_DefaultConfig["Status_Settings"]["Button_Alert_Activated"] = "False"
+		self.dict_DefaultConfig["Status_Settings"]["ShowNicknameOnWindow"]="True"
+
+		#Server Seettings
+		self.dict_DefaultConfig["IRC_Server"] = dict()
+		self.dict_DefaultConfig["IRC_Server"]["Server"]= "irc.dal.net"
+		self.dict_DefaultConfig["IRC_Server"]["Nickname"]="PyBirch1"
+		self.dict_DefaultConfig["IRC_Server"]["Port"]="6667"
+		self.dict_DefaultConfig["IRC_Server"]["RealName"]="Birch Python Client"
+		self.dict_DefaultConfig["IRC_Server"]["Ident"]="PyBirch"
+		self.dict_DefaultConfig["IRC_Server"]["BackupNick"]="PyBirch2"
+
+                #Nickname Settings
+		self.dict_DefaultConfig["Nickname"]=dict()
+		self.dict_DefaultConfig["Nickname"]["HostDisplay"]="false"
+
+
+------- Coding Notes -----------
+
+- A change to fix the nicklist problem, using .lower() seems to have affected tab-complete
+- It seems that not all nicks are being added on channel join to the nicklist
+
+--------Goals for Beta Release--------------
+- Channel Logging : Simple logging created in plugins (Done ALPHA 0.4.2)
+- Disconnection/timeout handled 
+--Disconection socket error fixed (Done for 0.4.1 ALPHA), now to fix disconnection by server.
+- Menus and buttons working - Done for 0.4 ALPHA
+- Disconenct works, and handles channels in some way - ALPHA -0.4.2.1
+- /msg creating a new window - DONE 0.2.2.1 ALPHA
+- /notice appearing in active? window
+- Popup dialog with kick/ban/kickban for individual nicks
+- Clear all Major Known Bugs.
+
+##############Known Bugs#####################
+-Major - Nick changes are not internally updated properly! - Some work has been done on this, all keys are now in lower-case. May be fixed, but requires monitoring (Alpha 0.4)
+
+-Minor - Not all users are being added to the nick-list. - Marked intermittent : Alpha 0.3 - This may be a subset of the above problem. May be fixed (Alpha 0.4) --Some nicks cannot be tab-completed as a result. - May be linked to the failure to print correct QUIT and PART messages: fixed Alpha 0.4.2.1
+
+- Kick message does not work properly
+
+-Minor - If a user(of the client) is banned, and joins channel, then is subsequently unbanned, the channel does not appear, and out put is piped to the status window.
+
+- Minor - if the windows is minimised, and text added, window does not scroll (therefore, window does not scroll minimised) - Found: ALPHA 0.4
+
+- Minor - following a disconnect, PART messages are still sent to a server when the channels close. Introduced - ALPHA 0.4.2.1 
+
+###########Items ToDo###################
+
+- Make the config creation/checking routines more robust. 
+-- Config is currently *created* in IrcConnection, Channels, and ServerOutputSorter. === Check the status of this... 
+- Add Server name to the status window
+- Get icons. 
+- Ensure user input works: Currently working: /me /msg 
+- Add Connect To, to allow the changing of server.
+---Works intermitently, but better than it did before.
+- Fix multiple +oo and +vv nick changes.
+- Context menu has been added for nicklist. Now it just needs to do something
+- Erros when trying to remove the Program User from a channel they've left.- Found in ALPHA 0.4.1
+- Print Full Configuration, even unused settings
+
+
+#################Partially Complete#####################
+
+- It seems that the lines are stripping spaces out. Fix this. - Marked intermittent - Alpha 0.3
+- KICK does not properly remove a user from the window. - Found in 0.2.2.1 ALPHA - Partial Fix Alpha 0.3
+- Add Colour to incomming text - some done for Alpha 0.2.1
+- Due to a bug? in the way python clears variables, TextString is not properly cleared between loops. This means the last values in it are used for unrecognised strings. - Possibly fixed : Alpha 0.2.1 
+
+-------Done for PyBirch 0.5 ALPHA (unreleased to the public)
+- Moved to PyQt5 for the GUI elements. 
+--This has meant re-implenting the actions, connections, as well as working without a simple
+  way to design the GUI, until such time as QtDesigner is updated. This includes an updated Properties
+  dialogue (mostly working), and updating a lot of connections that have been lagging. 
+- Added the basic type-history to the client (up and down arrow moves through it)
+
+------Done for PyBirch 0.4.2.2 ALPHA (Unreleased to the public)(Mostly Stable)
+
+-------Done for PyBirch 0.4.2.1 ALPHA (Unreleased to the public)
+- More Color choices added (J/P/Q now all have their own colour options)
+- Quit messages now appearing in channel window with better frequency. (Note: part messages, and kick messages are appearing twice). 
+- /msg and /me are now colourised
+- /msg now works as expected.
+- Disconnect now properly ends the thread. Errors cleaned up from text window.
+- Fix "Disconnect" button/menu command to allow it to re-connect after diconnection - Fixed in ALPHA 0.4.2.1
+--Handles channels, in that they close on disconnect. Has introduced minor bug that the client still sends
+  PART messages, producing a "disconnected from IRC, please reconnect" error message. - ALPHA 0.4.2.1
+- Minor - Nick Already In Use dialogue appears twice. Cancel (or close) sends information to the server. - Fixed in ALPHA 0.4.2.1 
+- Host names for nicks are now stored in the Nicklist database. 
+- Channel is now sent the TextString (rather than the displayString) in order to improve processing of information.
+- PyQt4 and PyQt5 version branches divided here.
+
+-------Done for PyBirch 0.4.1 ALPHA (unreleased to the public)
+- Basica plugin system created. 
+-- Simple Loggin Plugin made.
+
+
+-------Done for PyBirch 0.4.1 ALPHA (unreleased to the public)
+- Minimised button now changes colour when message is sent to window.
+- TabCompletion now cycles properly.
+- TabCompletion adds a postfix to the nick. Postfix is configurable in the properties of the text file.
+- Context menu on the NickList partially working.
+- Stauts Window Alert can now be turned off in the config file. 
+- WHOIS partially complete - There is a problem with idle time causing the Server section to mis-display, but no idea why.
+- WHOIS now works from Popup Menu
+- Disconnect error messages cleared (except QTimer message)
+
+--------Done for PyBirch 0.4 ALPHA (unreleased to the public)
+- Menus working. About shows this text file.
+- Status window is now a subset of Channel. This means Status now responds to colour/font changes etc. 
+- Nick Already In Use Dialogue now implemented.
+	- Bug : This dialogue appears twice
+	- Bug : it has a cancel button, and no default nick. 
+	- Bug : pressing Cancel sends information to the server. 
+
+--------Done for PyBirch 0.3.1 ALPHA (unreleased to the public)
+- Properties dialogue (whooo hooo!)
+- Stores Nickname, Server and Font/size. Font dialogue draws from fonts
+  available on system.
+--Size is done in either points (px), or size. User choice in dialogue box
+- Notices are now different, and purple!
+- Channel list now sorting properly. Sort was not taking account of capitalisation. (see Bug Fixes)
+
+--------Done for PyBirch 0.3 ALPHA (unreleased to the public)
+- Nick changes now showing in channel, and in Status window 
+- De-voice/De-op notices now working properly. 
+- Channel now has Channel Title in Title bar.
+-- Tool-tip for channel title removed as it's too irritating. 
+--- Work-around needed.
+- KICK removes people, and prints the kick in channel - Tentative Fix
+- Tab-complete now case-insensitive
+
+--------Done for PyBirch 0.2.2.1 ALPHA (unreleased to the public)
+- Nicklist now updates when a nick is changed.
+- Channel Buttons added (click to minimize/restore) - however, does not work
+  from inside the channel.
+- tab-complete now cycles through nicks - Has occasional trouble with second nick.
+- Channel now reliably adjusts. User can scroll without channel jerking back to original position. Copy form channel also works. Channel no-longer over-wrights when user accidentally clicks in the window. 
+- /msg created, including own window type.   
+- +v/-v operations now adjust nicklist immediately, rather than after a delay.
+
+--------Done for PyBirch 0.2.2 ALPHA (unreleased to the public)
+- Added time-stamp
+- Added basic colours
+- Added Tab-Complete of nick-names (though only one iteration)
+- Ensured NickLists are sorted in order
+- Added status change (ops/voices) (though only single +v/+o)
+- Messages for Kick/QUIT etc added.
+- New Status Window (Less Ugly, does resize). 
+
+---------Done for PyBirch 0.2.1 ALPHA (unreleased to the public)
+- Windows tile and Cascade
+
+################## BUGS/Items Todo Completed ###################
+
+-Major - All Menu Items are currently just decorationly just decoration- Fixed ALPHA 0.4
+-Major -  Message Window doesn't scroll properly - Found 0.3 ALPHA - Message window was not set ReadOnly-  FIXED Alpha 0.4
+-Minor - Status Window not affected by font changes. Status window is now a subset of Channel- Found 0.3.1 ALPHA - Completed ALPHA 0.4
+-The Nick-List, in large channels, is not ordered properly.- Sort was not properly taking account of capitalisation. 
+	Fixed to sort on lower-case version of the nickname- Fixed 0.3.1 ALPHA
+- Part messages appear twice - Found in 0.2.2.1 ALPHA - Fixed 0.3 ALPHA
+- Add Message window - Done Alpha 0.2.2.1.
+- Add Channel topic to the window  bar - Done Alpha 0.3
+- get tab-nick complete working - Basic done for Alpha 0.2.1 - Mostly fixed for 0.2.2.1
+--tab-complete cycles round nicks, but only one per line. Done for Alpha 0.2.2 - Fixed for 0.2.2.1
+- Fix PING response. - FIXED Alpha 0.2.1
+- Status/Server window is UGLY, and doesn't resize well. : - FIXED Alpha 0.2.2
+- Ensure that QUIT removes people from the NickList : FIXED Alpha 0.2.2
+- Ensure that MODE changes (KICK/VOICE/OP) affect the NickList properly : FIXED Alpha 0.2.2
+- (Bug) If a user is opped, then voiced, client shows user as voiced. : FIXED ALPHA 0.2.2 
+- Improve separation of QUIT and QUIT Message : FIXED Alpha 0.2.2

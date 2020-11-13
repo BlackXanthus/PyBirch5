@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>BirchSubWindow</class>
+ <widget class="QMdiSubWindow" name="BirchSubWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>660</width>
+    <height>361</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Form</string>
+  </property>
+  <layout class="QGridLayout" name="gridLayout" columnstretch="100,0,0,50" columnminimumwidth="100,0,0,50">
+   <item row="0" column="0" colspan="3">
+    <widget class="QTextEdit" name="editor_Window"/>
+   </item>
+   <item row="1" column="0" colspan="3">
+    <widget class="QLineEdit" name="text_input"/>
+   </item>
+   <item row="1" column="3">
+    <widget class="QLabel" name="label_ChanName">
+     <property name="text">
+      <string>(None)</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="0" column="3">
+    <widget class="QListView" name="list_NickList"/>
+   </item>
+  </layout>
+ </widget>
+ <customwidgets>
+  <customwidget>
+   <class>QMdiSubWindow</class>
+   <extends>QWidget</extends>
+   <header>qmdisubwindow.h</header>
+   <container>1</container>
+  </customwidget>
+ </customwidgets>
+ <resources/>
+ <connections/>
+</ui>

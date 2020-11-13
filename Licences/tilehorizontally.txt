@@ -1,0 +1,37 @@
+
+
+From : http://translate.google.com/translate?hl=en&sl=ru&u=http://www.prog.org.ru/topic_15261_0.html&prev=/search%3Fq%3Dqmdiarea%2Btile%2Bhorizontally%26hl%3Den%26tbo%3Dd&sa=X&ei=KYgRUeK4D6LK0QXLpoHADw&ved=0CFoQ7gEwBA
+ 
+ void MainWindow :: on_actionTileVertically_triggered () 
+  { 
+  QList <QMdiSubWindow *> subwindowlist = ui -> mdiArea -> subWindowList (); 
+  if (subwindowlist. count () <2) { 
+  ui -> mdiArea -> tileSubWindows (); 
+  return; 
+  } 
+  int wWidth = width () / subwindowlist. count (); 
+  int x = 0; 
+  foreach (QMdiSubWindow * pSubWindow, subwindowlist) 
+  { 
+  pSubWindow -> resize (wWidth, height ()); 
+  pSubWindow -> move (x, 0); 
+  x + = wWidth; 
+  } 
+  } 
+
+  void MainWindow :: on_actionTileHorizontally_triggered () 
+  { 
+  QList <QMdiSubWindow *> subwindowlist = ui -> mdiArea -> subWindowList (); 
+  if (subwindowlist. count () <2) { 
+  ui -> mdiArea -> tileSubWindows (); 
+  return; 
+  } 
+  int wHeight = height () / subwindowlist. count (); 
+  int y = 0; 
+  foreach (QMdiSubWindow * pSubWindow, subwindowlist) 
+  { 
+  pSubWindow -> resize (width (), wHeight); 
+  pSubWindow -> move (0, y); 
+  y + = wHeight; 
+  } 
+  } 

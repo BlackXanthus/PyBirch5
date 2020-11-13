@@ -1,0 +1,69 @@
+To Do List
+
+Done
+
+9. Stop multiple sockets opening(buggy problem) - DONE
+14. Nick compleation - Basic implementation - 0.5.1 BETA
+20. Add action listner to the main window to save properties when program closes - Properties
+replaced by Preferences. Action Listener unecessary.
+23. Investigate Connect-To. Possible proboem for first time users. - Bug No
+Longer Valid
+30. Stop stripping uncessessary spaces, or ASCII art looks crap! - Fixed
+(Alpha 0.5.4.2)
+39. Make button bar a toolbar. It allows users to make it float, and thus, allow me to put it wher eI like ;) - DONE
+47. Debug and IDent hidden by Default. - DONE
+41. Make Ping Work. - DONE - 0.5 BETA
+54. Add a Time option to messages, so you know how long it's been since anyone
+said anything. - DONE - 0.5 BETA
+51. Change from ALPHA to BETA when enough of the above is done! - DONE - 0.5
+BETA
+49. Enable hiding of debug menu. - DONE
+50. Get Fonts to work. This will enable the use of colours, and make the
+client far more usable. - Fonts working. Colours not yet done. Requires
+Menue/Poperties add-on to allow user to change font and text size. - DONE -0.5
+BETA
+33. Stop users from closing status window
+40. Commandline and Gui Mode - Cancel #linux(Dal.net) - undoable. Abandonded
+
+Waiting
+
+5. Get the client to pick up on multiple ops and voices (eg +oo) etc.
+8. Implement more menues.
+10. Allow user to change IRC server
+13: remember what you msg'd someone when you use /msg(ie fill it out as the opening line of a window)
+15. Scripting - possibly being replaced by Plugins
+16. Logging.
+17a. Set a message in the Status Window when you are kicked.
+21. Listen for "nick in use" and send an alternative nickname
+22. implement ctrl-tab switching between windows.
+24. Reduce Socket Timeout
+25. Improve Ident Server
+27. Check the properties.
+28. find a way of keeping the server right through out.
+29. Sort out Quit.
+31. Notify Plugins. Basically, so that when LoadPlugins is called, it first tells all plugins to "shutdown"
+	Not massivly difficult, but needs doing at some point, in the futre.Maybe.
+34. investigate Multiple servers
+35. Implement Change Logg!
+36. Investigate architecture.
+37. Fix focus problem
+38. change encoding to utf-8 (suggested by koalaman) DONE - appeared as a bug in 0.5.5.1
+42. Sort out properties Dialog Window, include more options!
+43. Implement API
+44. Re-Work Web-Page - Webpage created for 0.5.5, needs more work
+45. Document API, and up date included read-mes and TODO's.
+46. Remove Command Line Debugging, and route all Debugging to Debug Window.
+- In Progress
+48. Ensure SANE Defaults set in Preferences.
+2. Add Notify event when someone messages the user. - Added SystemIcon - In Progress (birch 0.5.5.1
+53. Make DCC work
+54. Fix PluginManager so that it does not crash on unrecognised files - DONE < birch 0.5.5
+55. Create "/exec" as a function
+56. Status window should be created by the ListenThread and passed to Channels - Done < Birch 0.5.5
+to avoid the lagg between pressing connect and anything happening. 
+57. Status window now flashes at the adding of the StatusBar. This needs to be
+fixed
+58. Line Length needs to be hard-fixed so that the user sees what others in the channel sees. - Set to 440 Character = 0.5.5.1
+59. /msg user(enter) causes the client to Crash! fixed ASAP!
+60. Possibly multiple messages on TrayIcon - explore and fix
+61. User Identification is not properly transferred from the properties to the connection details.

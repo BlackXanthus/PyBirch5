@@ -1,0 +1,39 @@
+PyBirch Documentation. v1 (inc todo)
+
+Currently, PyBirch has two internal windows. There's  the internal window that was designed with the first version of the UI, and is currently the status window, and then there is the the main channel ui, which is designed as a seperate widget, imported into Channel.py, and then used in start.py (and then subsequently shown). 
+
+This gets round what seems to be a problem with the UI designer and layout mangers. For some reason, you cannot use layout managers on subwindows, and as such it seems that it's eaiser to write the subwindow UI in this way. The bonus of this, of course, is that it gets round the potential problem of accessing the Widgets directly, and as such means that we can create these classes as we choose, ie. as the user joins channels, and we can give the channels convenience methods (setChannel, connect, disconnect, and so on). 
+
+All of the GUI communication will go through start.py (at least in version 0.1). This means that all channels will be connected with the same input slot, using the same event. As most people can't hit enter into the same window at the same time, the problems of the "two enters in different windows" vanishes'. 
+
+Python Naming Convention can be found here : http://www.python.org/dev/peps/pep-0008/#naming-conventions
+
+Goal 1 :- A basic, usable Client. 
+
+Goal 2 :- An Alpha Client (with basics like nick-list, preferences, and handling for message windows and so on). 
+
+Goal 3 :- A V.1 Client! a full bells and whistles client, with plugins, DCC, colours, backgrounds, themes, the works!
+
+Required to make Client usable (Goal 1)
+
+1. Be able to hit enter in the channel window, and actually send text to the channel.
+2. Some sort of sensible hack/fix for the channel window not updating in a timely fasion. Even if this is a fired timer to call the update on the window! - This may have been GTK+ related. appears to be a non-problem in Windows, and using the MATE desktop.
+
+Bug List
+2. Strange GUI bug: Channel window doesn't update with the rest of the GUI. No idea why.
+3. It seems scope in Python is WEIRD. The TextString is *not* being destroyed at the end of it's scope (as expected) and thus, despite being created anew in each ServerOutputSorter, old values are still there if they are not overwritten! - This may have been fixed by clearing all values in __init__. Needs Testing.
+4. The last letter, and in some cases the first letter, of the server id are being lost in the display. 
+
+ToDo List - Long Term
+
+1. versioning for client, and for individual classes.
+2. Vector to hold the channel name. 
+3. Nick List handling
+4. sort out python coding conventions, or at least adopt some form of consistent coding conventions. 
+5. Add hooks for the Menu items for connect and Disconnect
+6. Add Properties dialogue to allow for Ident changes (real name etc), and for saving of program state.
+
+
+Version 0.1
+
+1. Fix the problem that when *other* people join channels, NEW WINDOWS open! - Fixed for 0.1. Nick is updated by EMITing a signal everytime the nick is changed. This should mean that it can be kept constant by adding listeners to the signal for everyone that needs to know that it's changed. 
